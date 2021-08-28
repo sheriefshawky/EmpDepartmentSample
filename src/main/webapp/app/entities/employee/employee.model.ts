@@ -1,0 +1,34 @@
+import * as dayjs from 'dayjs';
+import { IDepartment } from 'app/entities/department/department.model';
+
+export interface IEmployee {
+  id?: number;
+  firstName?: string | null;
+  lastName?: string | null;
+  email?: string | null;
+  phoneNumber?: string | null;
+  hireDate?: dayjs.Dayjs | null;
+  salary?: number | null;
+  commissionPct?: number | null;
+  manager?: IEmployee | null;
+  department?: IDepartment | null;
+}
+
+export class Employee implements IEmployee {
+  constructor(
+    public id?: number,
+    public firstName?: string | null,
+    public lastName?: string | null,
+    public email?: string | null,
+    public phoneNumber?: string | null,
+    public hireDate?: dayjs.Dayjs | null,
+    public salary?: number | null,
+    public commissionPct?: number | null,
+    public manager?: IEmployee | null,
+    public department?: IDepartment | null
+  ) {}
+}
+
+export function getEmployeeIdentifier(employee: IEmployee): number | undefined {
+  return employee.id;
+}
